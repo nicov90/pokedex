@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "react-native02",
-    "slug": "react-native02",
+    "name": "Pokedex",
+    "slug": "Pokedex",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
+    "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#FFCC03"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -18,13 +18,22 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.nicov90.pokedex",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": ["INTERNET", "ACCESS_NETWORK_STATE"]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ee7fb74c-e405-467b-a660-94292b3b83f7"
+      },
+      "USERSAPI_URL": "https://users-api-nicov90.up.railway.app/api/users",
+      "POKEAPI_URL": "https://pokeapi.co/api/v2/"
     }
   }
 }

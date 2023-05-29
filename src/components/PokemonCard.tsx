@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { SvgUri } from "react-native-svg";
+import { Image } from "expo-image";
 import React from "react";
 import { getColorByPokemonType } from "../utils/pokemonColors";
 import { Pressable } from "react-native";
@@ -21,15 +21,16 @@ export default function PokemonCard({ data }: Record<string, any>) {
       <View style={cardStyles}>
         <Text style={styles.cardId}>
           {data.id.toString().length > 2 ? (
-            <Text style={{ color: 'rgba(0,0,0,0.55)' }}>#0{data.id}</Text>
+            <Text style={{ color: "rgba(0,0,0,0.55)" }}>#0{data.id}</Text>
           ) : (
-            <Text style={{ color: 'rgba(0,0,0,0.55)' }}>#00{data.id}</Text>
+            <Text style={{ color: "rgba(0,0,0,0.55)" }}>#00{data.id}</Text>
           )}
         </Text>
-        <SvgUri
-          width="100%"
-          height={100}
-          uri={data.sprites.other["dream_world"].front_default}
+        <Image
+          style={{ width: "100%", height: 100 }}
+          source={data.sprites.other["dream_world"].front_default}
+          transition={200}
+          contentFit="contain"
         />
         <Text style={styles.name}>{data.name}</Text>
       </View>

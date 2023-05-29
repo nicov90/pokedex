@@ -5,7 +5,7 @@ import { Dispatch } from "react";
 
 const loginSchema = Yup.object().shape({
   username: Yup.string().required(),
-  password: Yup.string().required(),
+  password: Yup.string().required().matches(/^\S+$/, 'No spaces in password allowed.'),
 });
 
 const registerSchema = Yup.object().shape({
@@ -13,7 +13,7 @@ const registerSchema = Yup.object().shape({
   firstname: Yup.string().required(),
   lastname: Yup.string().required(),
   username: Yup.string().required(),
-  password: Yup.string().required(),
+  password: Yup.string().required().matches(/^\S+$/, 'No spaces in password allowed.'),
 });
 
 export const validateLoginInputs = async (dispatch: Dispatch<any>, 
@@ -33,7 +33,6 @@ export const validateLoginInputs = async (dispatch: Dispatch<any>,
     return false;
   }
 };
-
 
 export const validateRegisterInputs = async (dispatch: Dispatch<any>, data: any) => {
   try {

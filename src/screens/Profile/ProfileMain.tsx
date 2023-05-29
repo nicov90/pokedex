@@ -17,13 +17,16 @@ import AnimatedLottieView from "lottie-react-native";
 import waveLoader from "../../../assets/single-wave-loader.json";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { ProfileScreens } from "../../navigation/ProfileNavigation";
+import { UserTypeWithId } from "../../components/Auth/types";
 
 export default function ProfileMain() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const { auth } = useSelector((state: any) => state.account);
   const { isLoading } = useSelector((state: any) => state.general);
-  const { currentUser } = useSelector((state: any) => state.currentUser);
+  const { currentUser }: { currentUser: UserTypeWithId } = useSelector(
+    (state: any) => state.currentUser
+  );
   const { firstname, lastname, favorites } = currentUser;
 
   const signOutHandler = () => {
@@ -56,7 +59,7 @@ export default function ProfileMain() {
   const backHandler = () => {
     const indexedRoutesLength = navigation.getState().routes.length - 1;
     const currentRoute =
-    navigation.getState().routes[indexedRoutesLength]?.name;
+      navigation.getState().routes[indexedRoutesLength]?.name;
     if (currentRoute === "ProfileMain") {
       return true;
     } else {
@@ -66,8 +69,9 @@ export default function ProfileMain() {
 
   useFocusEffect(
     useCallback(() => {
-      BackHandler.addEventListener('hardwareBackPress', backHandler);
-      return () => BackHandler.removeEventListener('hardwareBackPress', backHandler);
+      BackHandler.addEventListener("hardwareBackPress", backHandler);
+      return () =>
+        BackHandler.removeEventListener("hardwareBackPress", backHandler);
     }, [])
   );
 

@@ -58,7 +58,7 @@ export default function Register() {
           password,
           favorites: [],
         };
-        const data = await userApi
+        await userApi
           .create(newUserObj)
           .then((data) => {
             const createdUser = data.find(

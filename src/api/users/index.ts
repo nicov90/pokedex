@@ -3,7 +3,7 @@ import { UserKeyTypes, UserType, UserTypeWithId } from '../../components/Auth/ty
 import Constants from 'expo-constants';
 
 export class User {
-  apiRoot: string = Constants.expoConfig?.extra?.USERSAPI_URL;
+  private apiRoot: string = Constants.expoConfig?.extra?.USERSAPI_URL;
 
   async create(userObj: UserType){
     const {email, username} = userObj;
@@ -45,7 +45,11 @@ export class User {
         return null;
       })
   }
-  async delete(){
-    
+  async delete(id: string){
+    await axios.delete(`${this.apiRoot}/${id}`)
+    .catch(err => {
+      console.log(err);
+      throw new Error("An error ocurred");
+    });
   }
 }
